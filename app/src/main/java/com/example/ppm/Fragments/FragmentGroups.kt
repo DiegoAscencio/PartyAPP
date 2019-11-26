@@ -1,6 +1,7 @@
 package iteso.mx.fragments.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ppm.GameActivity
 import com.example.ppm.MyAdapter
 import com.example.ppm.R
 import com.google.android.material.textfield.TextInputEditText
@@ -25,6 +27,7 @@ class FragmentGroups : Fragment() {
     lateinit var addPlayer: ImageView
     lateinit var goBack: ImageView
     lateinit var saveBtn: Button
+    lateinit var playBtn: Button
     lateinit var newGroup: TextInputEditText
 
     //Playerscount variable
@@ -51,7 +54,7 @@ class FragmentGroups : Fragment() {
         addPlayer = view.findViewById(R.id.main_sum_icon)
         goBack = view.findViewById(R.id.back_arrow)
         saveBtn = view.findViewById(R.id.fragmen_group_btn_save)
-        saveBtn = view.findViewById(R.id.fragmen_group_btn_save)
+        playBtn = view.findViewById(R.id.fragmen_group_btn_play)
         newGroup = view.findViewById(R.id.new_group_text)
         return view
     }
@@ -109,5 +112,10 @@ class FragmentGroups : Fragment() {
              }
         })
 
+        playBtn.setOnClickListener(View.OnClickListener{
+            Log.d("Entra el game", "game: ")
+            val intent = Intent(activity, GameActivity::class.java)
+            activity?.startActivity(intent)
+        })
     }
 }
