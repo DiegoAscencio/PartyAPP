@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#416675">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/activity_main_image"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/avatar2"
+        app:civ_border_color="#EEEEEE"
+        app:civ_border_width="4dp"
+        app:civ_shadow="true"
+        app:civ_shadow_color="#C2BD63"
+        app:civ_shadow_radius="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/activity_logup_tf_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
+        android:hint="Username"
+        android:textColorHint="#C2BD63"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_logup_btn_getPhoto">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/activity_logup_tf_username_tx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#C2BD63" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/activity_logup_tf_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
+        android:hint="Email"
+        android:textColorHint="#C2BD63"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_logup_tf_username">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/activity_logup_tf_email_tx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#C2BD63"
+            android:inputType="textWebEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- DATE PICKER-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
+        android:hint="Birthday"
+        android:textColorHint="#C2BD63"
+        app:layout_constraintEnd_toStartOf="@+id/activity_logup_btn_getDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_logup_tf_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/activity_logup_tf_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:textColor="#C2BD63" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <ImageButton
+        android:id="@+id/activity_logup_btn_getPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="photoInsert"
+        android:src="@drawable/ic_photo"
+        app:layout_constraintBottom_toTopOf="@+id/activity_logup_tf_username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_image"
+        app:layout_constraintVertical_bias="0.567" />
+
+    <Button
+        android:id="@+id/activity_logup_btn_logup"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:background="#C2BD63"
+        android:onClick="clicklup"
+        android:text="Share Profile"
+        android:textColor="#416675"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

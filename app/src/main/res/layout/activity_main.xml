@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#416675">
+
+    <FrameLayout
+        android:id="@+id/frame_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/activity_main_aboutus"
+        android:contentDescription="User Avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_help"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="showAbputUs"/>
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/activity_main_image"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/avatar2"
+        app:civ_border_color="#EEEEEE"
+        app:civ_border_width="4dp"
+        app:civ_shadow="true"
+        app:civ_shadow_color="#C2BD63"
+        app:civ_shadow_radius="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/activity_main_tf_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="64dp"
+        android:hint="Username"
+        android:textColorHint="#C2BD63"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_image">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/activity_main_tf_username_tx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_person"
+            android:drawablePadding="10dp"
+            android:textColor="#C2BD63" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/activity_main_tf_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
+        android:hint="Password"
+        android:textColorHint="#C2BD63"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_tf_username"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="#C2BD63">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/activity_main_tf_password_tx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_https"
+            android:drawablePadding="10dp"
+            android:inputType="textPassword"
+            android:textColor="#C2BD63" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/activity_main__btn_login"
+        android:layout_width="110dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="64dp"
+        android:background="#C2BD63"
+        android:text="Log in"
+        android:textColor="#416675"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_tf_password" />
+
+    <Button
+        android:id="@+id/activity_main_btn_logup"
+
+        android:layout_width="110dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="64dp"
+        android:background="#7CB5CC"
+        android:text="Log up"
+        android:textColor="#416675"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_tf_password" />
+
+    <TextView
+        android:id="@+id/activity_main_f_txt_or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="or"
+        android:textColor="#C2BD63"
+        app:layout_constraintEnd_toStartOf="@+id/activity_main_btn_logup"
+        app:layout_constraintStart_toEndOf="@+id/activity_main__btn_login"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_tf_password" />
+
+    <TextView
+        android:id="@+id/activity_main_forgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Forgot your password"
+        android:textColor="#C2BD63"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main__btn_login" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

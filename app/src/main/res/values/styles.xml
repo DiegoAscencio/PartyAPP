@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/amarillo</item>
+        <item name="colorPrimaryDark">@color/azulFuerte</item>
+        <item name="colorAccent">@color/azulBajito</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="Titles">
+        <item name="android:textColor">@color/amarillo</item>
+        <item name="android:textSize">30dp</item>
+
+    </style>
+
+</resources>
+
