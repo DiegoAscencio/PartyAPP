@@ -9,10 +9,11 @@
 
     <TextView
         android:id="@+id/activity_about_us_main"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:textAlignment="center"
         android:drawableStart="@drawable/ic_left_arrow"
         android:drawablePadding="10dp"
         android:text="About us"
@@ -57,7 +58,7 @@
         android:id="@+id/activity_about_us_label_person1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dieguito"
+        android:text="Diego"
         android:textSize="25dp"
         android:textColor="#C2BD63"
         app:layout_constraintTop_toBottomOf="@id/activity_about_us_person1"
@@ -68,7 +69,7 @@
         android:id="@+id/activity_about_us_label_person2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Javi"
+        android:text="Javier"
         android:textSize="25dp"
         android:textColor="#C2BD63"
         app:layout_constraintTop_toBottomOf="@id/activity_about_us_person2"
@@ -79,7 +80,7 @@
         android:id="@+id/activity_about_us_label_person3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rosendo"
+        android:text="Federico"
         android:textSize="25dp"
         android:textColor="#C2BD63"
         app:layout_constraintTop_toBottomOf="@id/activity_about_us_person3"
@@ -96,8 +97,7 @@
         app:layout_constraintTop_toBottomOf="@id/activity_about_us_label_person1"
         app:layout_constraintStart_toStartOf="@id/activity_about_us_label_person1"
         app:layout_constraintEnd_toEndOf="@id/activity_about_us_label_person3"
-        android:text="Este es un texto largo y mamalon en el cual cuando
-        encuentre las palabras necesarias (probablemente borracho) ponga algo bonito"
+        android:text="El proposito principal por el cual construimos esta aplicacion fue el hacer sus fiestas y reuniones mas divertidas y darles una herramienta para hacer nuevos amigos, espero la disfruten jugando como nosotros nos divertidos creandola."
         android:paddingHorizontal="20dp"
         />
 

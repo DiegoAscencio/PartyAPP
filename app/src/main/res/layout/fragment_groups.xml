@@ -4,8 +4,22 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-android:layout_height="match_parent"
-    android:background="#416675">
+    android:layout_height="match_parent"
+    android:background="#416675"
+    >
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_tittle"
+        app:layout_constraintStart_toEndOf="@id/back_arrow"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="center"
+        android:padding="6dp"
+        android:text="PartyApp"
+        style="@style/Titles"
+        />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/back_arrow"
@@ -18,16 +32,6 @@ android:layout_height="match_parent"
         android:onClick="backToLogin"
         />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/main_tittle"
-        app:layout_constraintStart_toEndOf="@id/back_arrow"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="6dp"
-        android:text="PPM"
-        style="@style/Titles"
-        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_view"
@@ -35,13 +39,13 @@ android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@id/main_tittle"/>
+        app:layout_constraintTop_toBottomOf="@id/new_group"
+        app:layout_constraintBottom_toTopOf="@id/new_player"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/new_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="20dp"
@@ -49,7 +53,8 @@ android:layout_height="match_parent"
         android:textColorHint="#C2BD63"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_recycler_view">
+        app:layout_constraintTop_toBottomOf="@id/main_tittle"
+        app:layout_constraintBottom_toTopOf="@id/my_recycler_view">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/new_group_text"
@@ -71,7 +76,7 @@ android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@id/fragmen_group_btn_play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_group">
+        app:layout_constraintTop_toBottomOf="@+id/my_recycler_view">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/new_player_text"
@@ -91,7 +96,7 @@ android:layout_height="match_parent"
         android:src="@drawable/ic_add_circle"
         app:layout_constraintBottom_toTopOf="@id/fragmen_group_btn_play"
         app:layout_constraintStart_toEndOf="@id/new_player"
-        app:layout_constraintTop_toBottomOf="@+id/new_group" />
+        app:layout_constraintTop_toBottomOf="@id/my_recycler_view" />
 
     <Button
         android:id="@+id/fragmen_group_btn_save"
