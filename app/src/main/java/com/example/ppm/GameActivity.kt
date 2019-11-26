@@ -13,6 +13,7 @@ class GameActivity : AppCompatActivity() {
     private lateinit var gameLayout: ConstraintLayout
     private lateinit var gameText : TextView
     private lateinit var gameType : TextView
+    private lateinit var arrowBack : TextView
     private var clicks = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +24,7 @@ class GameActivity : AppCompatActivity() {
         //Finds
         gameText = find(R.id.textGame)
         gameType = find(R.id.typeOfGame)
+        arrowBack = find(R.id.backArrow)
 
         //Layout Clicks
         gameLayout = find(R.id.gameLayout_layout)
@@ -37,24 +39,33 @@ class GameActivity : AppCompatActivity() {
             when (clicks) {
                 0 -> {
                     gameLayout.setBackgroundColor(Color.parseColor("#3A7A09"))
+                    gameType.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_circle,0,0,0)
                     gameType.text = "Game"
                     gameText.text = "Text of game"
                     clicks = 1
                 }
                 1 -> {
                     gameLayout.setBackgroundColor(Color.parseColor("#CC3704"))
+                    gameType.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_back,0,0,0)
                     gameType.text = "Rule"
                     gameText.text = "Text of rule"
                     clicks = 2
                 }
                 2->{
                     gameLayout.setBackgroundColor(Color.parseColor("#293AA1"))
+                    gameType.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_yellow_24dp,0,0,0)
                     gameType.text = "Challenge"
                     gameText.text = "Text of challenge"
                     clicks = 0
                 }
             }
             Log.d("Click", "Layout tocuh made")
+        }
+
+        //BackArrow
+
+        arrowBack.setOnClickListener {
+            onBackPressed()
         }
     }
 }
