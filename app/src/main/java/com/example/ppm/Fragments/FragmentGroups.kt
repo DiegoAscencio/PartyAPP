@@ -12,7 +12,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ppm.Game
+import com.example.ppm.GameActivity
 import com.example.ppm.MyAdapter
 import com.example.ppm.R
 import com.google.android.material.textfield.TextInputEditText
@@ -114,7 +114,7 @@ class FragmentGroups : Fragment() {
 
         playBtn.setOnClickListener(View.OnClickListener{
             Log.d("Entra el game", "game: ")
-            val intent = Intent(activity, Game::class.java)
+            val intent = Intent(activity, GameActivity::class.java)
             activity?.startActivity(intent)
         })
     }
