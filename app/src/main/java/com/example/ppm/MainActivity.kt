@@ -65,10 +65,9 @@ class MainActivity : AppCompatActivity() {
             query.findInBackground{objects, e ->
                 if (e == null) {
                     for (armor in objects) {
-                        //Log.d("Parse:", "User: " + armor.get("username") + " Pass: " + armor.get("password"))
                         //Log.d("Datos:", "User: " + txtUser.text.toString() + " Pass: " + txtPass.text.toString())
                         if (armor.get("username") == txtUser.text.toString() && armor.get("password") == txtPass.text.toString()) {
-                           // Log.d("Jala", "Jala")
+                            // Log.d("Jala", "Jala")
                             val editor = sharedPref.edit()
                             editor.putString("user", armor.get("username").toString())
                             editor.apply()
@@ -80,7 +79,8 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     Log.d("Errorsazo", "Error: " + e!!.message)
                 }
-            }
+            }                    //Log.d("Parse:", "User: " + armor.get("username") + " Pass: " + armor.get("password"))
+
         }
       
         // Initialize a new instance of
