@@ -114,6 +114,11 @@ class FragmentGroups : Fragment() {
 
         playBtn.setOnClickListener(View.OnClickListener{
             Log.d("Entra el game", "game: ")
+
+            val editor = sharedPref.edit()
+            editor.putString("playersString", players.toString())
+            editor.apply()
+
             val intent = Intent(activity, GameActivity::class.java)
             activity?.startActivity(intent)
         })
