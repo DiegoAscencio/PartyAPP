@@ -1,5 +1,6 @@
 package com.example.ppm
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -39,8 +40,9 @@ class GameActivity : AppCompatActivity() {
 
         games = mutableListOf<ParseObject>()
 
-        val query = ParseQuery.getQuery<ParseObject>("Games")
 
+
+        val query = ParseQuery.getQuery<ParseObject>("Games")
         games = query.find()
         Log.d("cagadero", games.get(1).get("Game").toString())
 
@@ -49,10 +51,22 @@ class GameActivity : AppCompatActivity() {
         gameText.text = games.get(1).get("Game").toString()
         //---------
 
+        val sharedPref = getSharedPreferences("session", Context.MODE_PRIVATE)
+        val playersString = sharedPref!!.getString("playersString", "no jala")!!
+        val players = playersString.split(" ")
+        Log.d("players: ", playersString)
+
         gameLayout.setOnClickListener {
             count = games.size
                 val game = games.get(Random.nextInt(0, count-1))
                 Log.d("Listener", game.get("Type").toString())
+                var texto: String
+
+                if (game.get("PlayerOrder") == 1) {
+                    texto = players.get(Random.nextInt(0, players.size-1)).toString().plus(" ").plus(game.get("Game").toString())
+                } else {
+                    texto = game.get("Game").toString()
+                }
                 when (game.get("Type").toString()) {
                     "Games" -> {
                         gameLayout.setBackgroundColor(Color.parseColor("#3A7A09"))
@@ -63,7 +77,7 @@ class GameActivity : AppCompatActivity() {
                             0
                         )
                         gameType.text = "Game"
-                        gameText.text = game.get("Game").toString()
+                        gameText.text = texto
                     }
                     "Rules" -> {
                         gameLayout.setBackgroundColor(Color.parseColor("#CC3704"))
@@ -74,7 +88,7 @@ class GameActivity : AppCompatActivity() {
                             0
                         )
                         gameType.text = "Rule"
-                        gameText.text = game.get("Game").toString()
+                        gameText.text = texto
                     }
                     "Challenges" -> {
                         gameLayout.setBackgroundColor(Color.parseColor("#293AA1"))
@@ -85,7 +99,7 @@ class GameActivity : AppCompatActivity() {
                             0
                         )
                         gameType.text = "Challenge"
-                        gameText.text = game.get("Game").toString()
+                        gameText.text = texto
                     }
                 }
         }
