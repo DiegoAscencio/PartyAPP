@@ -1,0 +1,53 @@
+[33mcommit 5bf222139fa04a6524db402996a1d87d30e6a0e9[m[33m ([m[1;36mHEAD -> [m[1;32mDiego2[m[33m, [m[1;31morigin/Diego2[m[33m)[m
+Author: DiegoAscencio <is698355@iteso.mx>
+Date:   Tue Nov 26 20:32:57 2019 -0600
+
+    Intent of gallery added to profile
+
+[33mcommit 1f06ed755d04aa3144c0aabd562d79317cc9919c[m
+Author: DiegoAscencio <is698355@iteso.mx>
+Date:   Tue Nov 26 19:45:09 2019 -0600
+
+    Fragment profile class linked
+
+[33mcommit 74171e9003e263a07b33b7bf1ea690f698346d70[m[33m ([m[1;32mJaviMasterManualMerge[m[33m)[m
+Author: DiegoAscencio <is698355@iteso.mx>
+Date:   Tue Nov 26 19:27:45 2019 -0600
+
+    Rename fragment share ids
+
+[33mcommit 49df145821a238f1066d8c3cda1b8edff63b9310[m[33m ([m[1;31morigin/JaviMasterManualMerge[m[33m)[m
+Author: DiegoAscencio <is698355@iteso.mx>
+Date:   Tue Nov 26 17:52:19 2019 -0600
+
+    Change icon, modify groups fragment and about us
+
+[33mcommit 5d7ec3ee5d3d21852012879a4071a496104b70ca[m[33m ([m[1;31morigin/Diego[m[33m, [m[1;32mDiego[m[33m)[m
+Author: DiegoAscencio <is698355@iteso.mx>
+Date:   Tue Nov 26 17:26:48 2019 -0600
+
+    Logic behind games change
+
+[33mcommit 62dffd94d76ef92f1eb788ae5448ada2438b6991[m
+Author: DiegoAscencio <is698355@iteso.mx>
+Date:   Tue Nov 26 16:59:26 2019 -0600
+
+    Game activity with different examples working, hard code
+
+[33mcommit 7d52294bc4d008af086f391aa5f1a8c1af736914[m
+Author: DiegoAscencio <is698355@iteso.mx>
+Date:   Tue Nov 26 08:34:42 2019 -0600
+
+    Game activity xml
+
+[33mcommit 97285996289c2a6431b6ea76c6f6c6e09f0b00f7[m[33m ([m[1;32mmaster[m[33m)[m
+Author: DiegoAscencio <is698355@iteso.mx>
+Date:   Tue Nov 26 08:06:43 2019 -0600
+
+    Game activity created
+
+[33mcommit 3c61f9102602c5d5dcde6c17a87c4583bef9c489[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: DiegoAscencio <is698355@iteso.mx>
+Date:   Tue Nov 26 07:31:58 2019 -0600
+
+    :)
