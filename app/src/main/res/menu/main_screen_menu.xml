@@ -7,6 +7,11 @@
         android:icon="@drawable/ic_menu_mail"
         android:title="Mail"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_game"
+        android:icon="@drawable/coffe"
+        android:title="Game"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_groups"

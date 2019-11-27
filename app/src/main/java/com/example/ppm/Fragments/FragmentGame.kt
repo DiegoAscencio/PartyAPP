@@ -1,4 +1,4 @@
-package com.example.ppm.Fragments
+package iteso.mx.fragments.fragments
 
 import android.content.Context
 import android.content.Intent
@@ -19,7 +19,9 @@ import com.google.android.material.textfield.TextInputEditText
 import com.parse.ParseObject
 import com.parse.ParseQuery
 
-class FragmentGroups: Fragment() {
+
+class FragmentGame : Fragment() {
+    //XML Elements
     lateinit var newPlayer: TextInputEditText
     lateinit var players: MutableList<String>
     lateinit var addPlayer: ImageView
@@ -43,17 +45,17 @@ class FragmentGroups: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_groups, container, false)
-        newPlayer = view.findViewById(R.id.new_player_text)
+        val view = inflater.inflate(R.layout.fragment_game, container, false)
         players = mutableListOf<String>()
         viewAdapter = MyAdapter(players)
         viewManager = LinearLayoutManager(view.context)
-        recyclerView = view.findViewById<RecyclerView>(R.id.my_recycler_view)
-        addPlayer = view.findViewById(R.id.main_sum_icon)
-        goBack = view.findViewById(R.id.back_arrow)
-        saveBtn = view.findViewById(R.id.fragmen_group_btn_save)
-        playBtn = view.findViewById(R.id.fragmen_group_btn_play)
-        newGroup = view.findViewById(R.id.new_group_text)
+        recyclerView = view.findViewById<RecyclerView>(R.id.fragment_game_rv_usersText)
+        newPlayer = view.findViewById(R.id.fragment_game_ti_newPlayer_tx)
+        addPlayer = view.findViewById(R.id.fragment_game_iv_addPlayer)
+        goBack = view.findViewById(R.id.fragment_game_i_backArrow)
+        saveBtn = view.findViewById(R.id.fragment_game_btn_save)
+        playBtn = view.findViewById(R.id.fragment_game_btn_play)
+        newGroup = view.findViewById(R.id.fragment_game_ti_newGroup_tx)
         return view
     }
 
@@ -98,7 +100,8 @@ class FragmentGroups: Fragment() {
                         if (armor.get("username") == user) {
                             Log.d("back", armor.get("Groupos").toString())
                             val aux =
-                                armor.get("Groupos").toString().plus("/").plus(newGroup.text.toString()).plus(players.toString())
+                                armor.get("Groupos").toString().plus("/")
+                                    .plus(newGroup.text.toString()).plus(players.toString())
                             armor.put("Groupos", aux)
                             armor.saveInBackground()
                             Log.d("array", aux)
@@ -110,7 +113,7 @@ class FragmentGroups: Fragment() {
             }
         })
 
-        playBtn.setOnClickListener(View.OnClickListener{
+        playBtn.setOnClickListener(View.OnClickListener {
             Log.d("Entra el game", "game: ")
 
             val editor = sharedPref.edit()
