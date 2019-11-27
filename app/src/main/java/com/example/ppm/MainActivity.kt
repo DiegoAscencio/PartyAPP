@@ -62,24 +62,24 @@ class MainActivity : AppCompatActivity() {
             //startActivity<GroupsActivity>()
 
             val query = ParseQuery.getQuery<ParseObject>("UserPPM")
-            query.findInBackground{objects, e ->
-                if (e == null) {
-                    for (armor in objects) {
-                        //Log.d("Datos:", "User: " + txtUser.text.toString() + " Pass: " + txtPass.text.toString())
-                        if (armor.get("username") == txtUser.text.toString() && armor.get("password") == txtPass.text.toString()) {
-                            // Log.d("Jala", "Jala")
-                            val editor = sharedPref.edit()
-                            editor.putString("user", armor.get("username").toString())
-                            editor.apply()
-                            startActivity<GroupsActivity>()
-                        } else {
-                            Log.d("No jala", "no jala")
-                        }
-                    }
+            val users = query.find()
+            var loginIsTrue = false
+            users.forEach { u -> run{
+                if (u.get("username") == txtUser.text.toString() && u.get("password") == txtPass.text.toString()) {
+                    // Log.d("Jala", "Jala")
+                    val editor = sharedPref.edit()
+                    editor.putString("user", u.get("username").toString())
+                    editor.apply()
+                    loginIsTrue = true
+                    startActivity<GroupsActivity>()
                 } else {
-                    Log.d("Errorsazo", "Error: " + e!!.message)
+                    Log.d("No jala", "no jala")
                 }
-            }                    //Log.d("Parse:", "User: " + armor.get("username") + " Pass: " + armor.get("password"))
+            }}
+
+            if(!loginIsTrue){
+                Toast.makeText(this, "Datos invalidos", Toast.LENGTH_LONG).show()
+            }
 
         }
       
