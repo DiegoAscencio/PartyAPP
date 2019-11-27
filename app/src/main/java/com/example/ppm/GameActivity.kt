@@ -59,11 +59,9 @@ class GameActivity : AppCompatActivity() {
                     clicks = 0
                 }
             }
-            Log.d("Click", "Layout tocuh made")
         }
 
         //BackArrow
-
         arrowBack.setOnClickListener {
             onBackPressed()
         }
