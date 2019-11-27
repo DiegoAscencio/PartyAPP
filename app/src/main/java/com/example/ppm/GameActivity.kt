@@ -10,7 +10,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.parse.ParseObject
 import com.parse.ParseQuery
 import org.jetbrains.anko.find
-import org.jetbrains.anko.startActivity
 import kotlin.random.Random
 
 class GameActivity : AppCompatActivity() {
@@ -52,7 +51,8 @@ class GameActivity : AppCompatActivity() {
         //---------
 
         val sharedPref = getSharedPreferences("session", Context.MODE_PRIVATE)
-        val playersString = sharedPref!!.getString("playersString", "no jala")!!
+        var playersString = sharedPref!!.getString("playersString", "no jala")!!
+        playersString = playersString.substring(1, playersString.length-2)
         val players = playersString.split(" ")
         Log.d("players: ", playersString)
 
