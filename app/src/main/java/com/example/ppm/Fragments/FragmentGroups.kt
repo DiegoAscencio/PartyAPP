@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ppm.GameActivity
+import com.example.ppm.GroupsAdapter
 import com.example.ppm.MyAdapter
 import com.example.ppm.R
 import com.google.android.material.textfield.TextInputEditText
@@ -21,7 +22,7 @@ import com.parse.ParseQuery
 
 class FragmentGroups: Fragment() {
     lateinit var newPlayer: TextInputEditText
-    lateinit var players: MutableList<String>
+    lateinit var players:  MutableList<Array<String>>
     lateinit var addPlayer: ImageView
     lateinit var goBack: ImageView
     lateinit var saveBtn: Button
@@ -35,8 +36,11 @@ class FragmentGroups: Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
+    var plyrs = ""
 
     lateinit var user: String
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,16 +48,13 @@ class FragmentGroups: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_groups, container, false)
-        newPlayer = view.findViewById(R.id.new_player_text)
-        players = mutableListOf<String>()
-        viewAdapter = MyAdapter(players)
+        players =  mutableListOf<Array<String>>()
+        viewAdapter = GroupsAdapter(players)
         viewManager = LinearLayoutManager(view.context)
         recyclerView = view.findViewById<RecyclerView>(R.id.my_recycler_view)
-        addPlayer = view.findViewById(R.id.main_sum_icon)
-        goBack = view.findViewById(R.id.back_arrow)
-        saveBtn = view.findViewById(R.id.fragmen_group_btn_save)
+        goBack = view.findViewById(R.id.fragment_group_iv_backArrow)
         playBtn = view.findViewById(R.id.fragmen_group_btn_play)
-        newGroup = view.findViewById(R.id.new_group_text)
+
         return view
     }
 
@@ -62,8 +63,38 @@ class FragmentGroups: Fragment() {
 
         val sharedPref = this.getActivity()?.getSharedPreferences("session", Context.MODE_PRIVATE)
         user = sharedPref!!.getString("user", "no jala")!!
+        Log.d("Grupos", user)
 
+        val query = ParseQuery.getQuery<ParseObject>("UserPPM")
+        var users = query.find()
+
+
+        var groupsSrt = ""
+
+        users.forEach { u -> run{
+            if (u.get("username").toString().equals(user)) {
+                groupsSrt = u.get("Groupos").toString()
+            }
+        }}
+
+
+        var groupsArray = groupsSrt.split("/")
+
+
+        groupsArray.forEach { grp -> run{
+            var grpSplitted = grp.split("[")
+            //players.add(playersCount, grpSplitted[0])
+
+            players.add(playersCount, grpSplitted.toTypedArray())
+            Log.d("new data", grpSplitted.toString())
+            playersCount++
+        }}
+
+        Log.d("Y", players[1].get(0))
+        Log.d("X", players[0][0])
+       // Log.d("Grupos", groupsArray.toString())
         //Recycler View
+
         recyclerView.apply {
             // use this setting to improve performance if you know that changes
             // in content do not change the layout size of the RecyclerView
@@ -75,44 +106,21 @@ class FragmentGroups: Fragment() {
             // specify an viewAdapter (see also next example)
             adapter = viewAdapter
 
+
+
+
         }
-        addPlayer.setOnClickListener(View.OnClickListener {
-            players.add(playersCount, newPlayer.text.toString())
-            playersCount++
-            newPlayer.text?.clear()
-            Log.d("array", players[players.size - 1])
-            viewAdapter.notifyDataSetChanged()
-        })
+
+
 
         goBack.setOnClickListener(View.OnClickListener {
             this.getActivity()?.onBackPressed()
         })
 
-        saveBtn.setOnClickListener(View.OnClickListener {
-            Log.d("Entra boton save", "Entra  boton save")
 
-            val query = ParseQuery.getQuery<ParseObject>("UserPPM")
-            query.findInBackground { objects, e ->
-                if (e == null) {
-                    for (armor in objects) {
-                        if (armor.get("username") == user) {
-                            Log.d("back", armor.get("Groupos").toString())
-                            val aux =
-                                armor.get("Groupos").toString().plus("/").plus(newGroup.text.toString()).plus(players.toString())
-                            armor.put("Groupos", aux)
-                            armor.saveInBackground()
-                            Log.d("array", aux)
-                        }
-                    }
-                } else {
-                    Log.d("Errorsazo", "Error: " + e!!.message)
-                }
-            }
-        })
 
         playBtn.setOnClickListener(View.OnClickListener{
             Log.d("Entra el game", "game: ")
-
             val editor = sharedPref.edit()
             editor.putString("playersString", players.toString())
             editor.apply()

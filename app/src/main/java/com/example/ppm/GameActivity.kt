@@ -50,11 +50,15 @@ class GameActivity : AppCompatActivity() {
         gameText.text = games.get(1).get("Game").toString()
         //---------
 
-        val sharedPref = getSharedPreferences("session", Context.MODE_PRIVATE)
-        var playersString = sharedPref!!.getString("playersString", "no jala")!!
-        playersString = playersString.substring(1, playersString.length-2)
-        val players = playersString.split(" ")
-        Log.d("players: ", playersString)
+       // val sharedPref = getSharedPreferences("session", Context.MODE_PRIVATE)
+        val query1 = ParseQuery.getQuery<ParseObject>("Players")
+        query1.orderByDescending("createdAt")
+        var playersString = query1.first
+        Log.d("players 1 ", playersString.get("Players").toString())
+
+
+        val players = playersString.get("Players").toString().split(", ")
+        Log.d("players 2", players.toString())
 
         gameLayout.setOnClickListener {
             count = games.size
@@ -63,10 +67,12 @@ class GameActivity : AppCompatActivity() {
                 var texto: String
 
                 if (game.get("PlayerOrder") == 1) {
-                    texto = players.get(Random.nextInt(0, players.size-1)).toString().plus(" ").plus(game.get("Game").toString())
+                    texto = players.get(Random.nextInt(0,  players.size-1)).toString().plus(" ").plus(game.get("Game").toString())
+                    //texto = game.get("Game").toString()
                 } else {
                     texto = game.get("Game").toString()
                 }
+
                 when (game.get("Type").toString()) {
                     "Games" -> {
                         gameLayout.setBackgroundColor(Color.parseColor("#3A7A09"))
