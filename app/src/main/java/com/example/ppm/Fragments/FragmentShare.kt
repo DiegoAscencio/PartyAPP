@@ -6,14 +6,12 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.Fragment
 import com.example.ppm.R
@@ -76,7 +74,11 @@ class FragmentShare : Fragment() {
 
         //Share
         share.setOnClickListener(View.OnClickListener {
-            Log.d("Listener", "Share")
+            val i = Intent(Intent.ACTION_SEND)
+            i.type = "text/plain"
+            i.putExtra(Intent.EXTRA_SUBJECT, "Sharing URL")
+            i.putExtra(Intent.EXTRA_TEXT, "Estoy jugando party app y me encantaria que te unieras a la diversion, visita http://www.partyapp.com para descargar :)")
+            startActivity(Intent.createChooser(i, "Share URL"))
         })
     }
 
