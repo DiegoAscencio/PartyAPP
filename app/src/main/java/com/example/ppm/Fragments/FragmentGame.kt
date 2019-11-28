@@ -13,11 +13,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ppm.GameActivity
+import com.example.ppm.GroupsAdapter
 import com.example.ppm.MyAdapter
 import com.example.ppm.R
 import com.google.android.material.textfield.TextInputEditText
 import com.parse.ParseObject
 import com.parse.ParseQuery
+
+
 
 
 class FragmentGame : Fragment() {
@@ -78,6 +81,8 @@ class FragmentGame : Fragment() {
             adapter = viewAdapter
 
         }
+
+
         addPlayer.setOnClickListener(View.OnClickListener {
             players.add(playersCount, newPlayer.text.toString())
             playersCount++
@@ -114,11 +119,12 @@ class FragmentGame : Fragment() {
         })
 
         playBtn.setOnClickListener(View.OnClickListener {
-            Log.d("Entra el game", "game: ")
+            Log.d("Players plgr", players.toString())
 
-            val editor = sharedPref.edit()
-            editor.putString("playersString", players.toString())
-            editor.apply()
+
+            val gameScore = ParseObject("Players")
+            gameScore.put("Players", players.toString())
+            gameScore.save()
 
             val intent = Intent(activity, GameActivity::class.java)
             activity?.startActivity(intent)

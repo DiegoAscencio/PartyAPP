@@ -97,7 +97,7 @@
         app:layout_constraintTop_toBottomOf="@id/activity_about_us_label_person1"
         app:layout_constraintStart_toStartOf="@id/activity_about_us_label_person1"
         app:layout_constraintEnd_toEndOf="@id/activity_about_us_label_person3"
-        android:text="El proposito principal por el cual construimos esta aplicacion fue el hacer sus fiestas y reuniones mas divertidas y darles una herramienta para hacer nuevos amigos, espero la disfruten jugando como nosotros nos divertidos creandola."
+        android:text="@string/abu"
         android:paddingHorizontal="20dp"
         />
 
