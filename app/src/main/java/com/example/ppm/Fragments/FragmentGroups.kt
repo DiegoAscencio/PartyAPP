@@ -50,7 +50,7 @@ class FragmentGroups: Fragment() {
         val view = inflater.inflate(R.layout.fragment_groups, container, false)
         players =  mutableListOf<Array<String>>()
         viewAdapter = GroupsAdapter(players)
-        viewManager = LinearLayoutManager(view.context)
+        viewManager = LinearLayoutManager(view.context) as RecyclerView.LayoutManager
         recyclerView = view.findViewById<RecyclerView>(R.id.my_recycler_view)
         goBack = view.findViewById(R.id.fragment_group_iv_backArrow)
         playBtn = view.findViewById(R.id.fragmen_group_btn_play)
@@ -90,8 +90,8 @@ class FragmentGroups: Fragment() {
             playersCount++
         }}
 
-        Log.d("Y", players[1].get(0))
-        Log.d("X", players[0][0])
+        //Log.d("Y", players[1].get(0))
+        //Log.d("X", players[0][0])
        // Log.d("Grupos", groupsArray.toString())
         //Recycler View
 

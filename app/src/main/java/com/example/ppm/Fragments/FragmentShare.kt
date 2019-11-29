@@ -2,6 +2,7 @@ package iteso.mx.fragments.fragments
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -14,9 +15,13 @@ import android.widget.Button
 import android.widget.ImageButton
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.Fragment
+import com.example.ppm.GroupsActivity
 import com.example.ppm.R
 import com.google.android.material.textfield.TextInputEditText
 import com.mikhaellopez.circularimageview.CircularImageView
+import com.parse.ParseObject
+import com.parse.ParseQuery
+import org.jetbrains.anko.startActivity
 
 
 class FragmentShare : Fragment() {
@@ -48,6 +53,25 @@ class FragmentShare : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        //Cargar datos del usuario
+       /* val sharedPref = this.getActivity()?.getSharedPreferences("session", Context.MODE_PRIVATE)
+        user = sharedPref!!.getString("user", "no jala")!!
+
+        val query = ParseQuery.getQuery<ParseObject>("UserPPM")
+        val users = query.find()
+        var loginIsTrue = false
+        users.forEach { u -> run{
+            if (u.get("username") == ) {
+                // Log.d("Jala", "Jala")
+                val editor = sharedPre
+                editor.putString("user", u.get("username").toString())
+                editor.apply()
+                loginIsTrue = true
+                startActivity<GroupsActivity>()
+            } else {
+                Log.d("No jala", "no jala")
+            }
+        }}*/
         //Add photo
         addPicture.setOnClickListener(View.OnClickListener {
             Log.d("Listener", "Add photo")
