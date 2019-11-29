@@ -48,6 +48,12 @@ class GameActivity : AppCompatActivity() {
         //Este es un caso hard code
         gameLayout.setBackgroundColor(Color.parseColor("#3A7A09"))
         gameText.text = games.get(1).get("Game").toString()
+        gameType.setCompoundDrawablesWithIntrinsicBounds(
+            R.drawable.game,
+            0,
+            0,
+            0
+        )
         //---------
 
        // val sharedPref = getSharedPreferences("session", Context.MODE_PRIVATE)
@@ -77,7 +83,7 @@ class GameActivity : AppCompatActivity() {
                     "Games" -> {
                         gameLayout.setBackgroundColor(Color.parseColor("#3A7A09"))
                         gameType.setCompoundDrawablesWithIntrinsicBounds(
-                            R.drawable.ic_add_circle,
+                            R.drawable.game,
                             0,
                             0,
                             0
@@ -88,7 +94,7 @@ class GameActivity : AppCompatActivity() {
                     "Rules" -> {
                         gameLayout.setBackgroundColor(Color.parseColor("#CC3704"))
                         gameType.setCompoundDrawablesWithIntrinsicBounds(
-                            R.drawable.ic_arrow_back,
+                            R.drawable.rule,
                             0,
                             0,
                             0
@@ -99,7 +105,7 @@ class GameActivity : AppCompatActivity() {
                     "Challenges" -> {
                         gameLayout.setBackgroundColor(Color.parseColor("#293AA1"))
                         gameType.setCompoundDrawablesWithIntrinsicBounds(
-                            R.drawable.ic_arrow_yellow_24dp,
+                            R.drawable.challenge,
                             0,
                             0,
                             0
