@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -110,6 +111,11 @@ class FragmentGame : Fragment() {
                             armor.put("Groupos", aux)
                             armor.saveInBackground()
                             Log.d("array", aux)
+                            Toast.makeText(
+                                this.context,
+                                "Grupo Guardado",
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     }
                 } else {

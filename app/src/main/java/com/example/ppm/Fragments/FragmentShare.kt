@@ -54,24 +54,22 @@ class FragmentShare : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         //Cargar datos del usuario
-       /* val sharedPref = this.getActivity()?.getSharedPreferences("session", Context.MODE_PRIVATE)
+        /*val sharedPref = this.getActivity()?.getSharedPreferences("session", Context.MODE_PRIVATE)
         user = sharedPref!!.getString("user", "no jala")!!
+        Log.d("Grupos", user)
 
         val query = ParseQuery.getQuery<ParseObject>("UserPPM")
-        val users = query.find()
-        var loginIsTrue = false
+        var users = query.find()
+
+
+        var groupsSrt = ""
+
         users.forEach { u -> run{
-            if (u.get("username") == ) {
-                // Log.d("Jala", "Jala")
-                val editor = sharedPre
-                editor.putString("user", u.get("username").toString())
-                editor.apply()
-                loginIsTrue = true
-                startActivity<GroupsActivity>()
-            } else {
-                Log.d("No jala", "no jala")
+            if (u.get("username").toString().equals(user)) {
+                groupsSrt = u.get("Groupos").toString()
             }
         }}*/
+
         //Add photo
         addPicture.setOnClickListener(View.OnClickListener {
             Log.d("Listener", "Add photo")
