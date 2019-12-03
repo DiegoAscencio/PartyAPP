@@ -73,7 +73,9 @@ class GameActivity : AppCompatActivity() {
                 var texto: String
 
                 if (game.get("PlayerOrder") == 1) {
-                    texto = players.get(Random.nextInt(0,  players.size-1)).toString().plus(" ").plus(game.get("Game").toString())
+                    var ply = players.get(Random.nextInt(0,  players.size-1)).replace("[","")
+                    ply = ply.replace("[","")
+                    texto = ply.plus(" ").plus(game.get("Game").toString())
                     //texto = game.get("Game").toString()
                 } else {
                     texto = game.get("Game").toString()

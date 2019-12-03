@@ -1,17 +1,20 @@
 package com.example.ppm
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.TransitionManager
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import android.widget.Button
-import com.example.ppm.Fragments.AboutUsFragment
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.parse.ParseObject
 import com.parse.ParseQuery
@@ -28,6 +31,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var frgtPass :TextView
     private lateinit var baboutUs: ImageView
 
+    private lateinit var userText: String
+
+    companion object {
+        const val CHANNEL_ID = "AndroidCourse"
+    }
+
 
     fun Context.toast(message: CharSequence) =
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -37,6 +46,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
+
+        createNotificationChannel()
 
         //Click on about us
         baboutUs = find(R.id.activity_main_aboutus)
@@ -55,22 +66,21 @@ class MainActivity : AppCompatActivity() {
         //Boton login
         bLogin = find(R.id.activity_main__btn_login)
         val sharedPref = getSharedPreferences("session",Context.MODE_PRIVATE)
-        bLogin.setOnClickListener{
 
-
+        bLogin.setOnClickListener {
             Log.d("brn","login works")
-            //startActivity<GroupsActivity>()
 
             val query = ParseQuery.getQuery<ParseObject>("UserPPM")
             val users = query.find()
+
             var loginIsTrue = false
             users.forEach { u -> run{
                 if (u.get("username") == txtUser.text.toString() && u.get("password") == txtPass.text.toString()) {
-                    // Log.d("Jala", "Jala")
                     val editor = sharedPref.edit()
                     editor.putString("user", u.get("username").toString())
                     editor.apply()
                     loginIsTrue = true
+                    userText = u.get("username").toString()
                     startActivity<GroupsActivity>()
                 } else {
                     Log.d("No jala", "no jala")
@@ -81,6 +91,14 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Datos invalidos", Toast.LENGTH_LONG).show()
             }
 
+            val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
+                .setContentTitle("Es hora de jugar!")
+                .setContentText("Que gusto tenerte de vuelta $userText :)")
+                .setStyle(NotificationCompat.BigTextStyle())
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+            NotificationManagerCompat.from(this).notify(10, builder.build())
         }
       
         // Initialize a new instance of
@@ -158,10 +176,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-   /* fun showAboutUs(view: View){
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.frame_main, AboutUsFragment())
-            .commit()
-    }*/
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationChannel = NotificationChannel(
+                CHANNEL_ID,
+                "mx.iteso.ANDROID",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            val notificationManger = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManger.createNotificationChannel(notificationChannel)
+        }
+    }
 }
